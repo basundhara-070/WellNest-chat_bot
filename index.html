@@ -46,13 +46,12 @@
       display: flex;
       flex-direction: column;
       gap: 10px;
-      background-image: url('./public/chatbot_bg.png');
+      background-image: url('./chatbot_bg.png'); /* Ensure this path is correct */
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
       scrollbar-width: thin;
       scrollbar-color: #29b5f6 #f0f0f0;
-      
     }
 
     /* Custom Scrollbar */
@@ -85,8 +84,27 @@
       justify-content: flex-start;
     }
 
-    .user-message,
-    .bot-message {
+    /* Icon Styles */
+    .icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #29b5f6;
+      color: white;
+      font-size: 30px;
+      box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Move the user icon to the right */
+    
+
+    /* Move the bot icon to the left of the message */
+
+    /* User and bot message styling */
+    .user-message, .bot-message {
       padding: 12px;
       border-radius: 12px;
       max-width: 70%;
@@ -99,49 +117,12 @@
       background-color: #29b5f6;
       color: white;
       box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
-      
     }
-
 
     .bot-message {
       background-color: #fff;
       color: #000;
-      /* Basic box shadow */
-box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
-
-    }
-
-    /* Icons */
-    .icon {
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background-color: #29b5f6;
-      color: white;
-      font-size: 30px;
-    }
-
-    .icon.user {
-      background-color: #a2ddf9;
       box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
-    }
-
-    .icon.bot {
-      background-color: #a2ddf9;
-      box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
-    }
-
-    /* Move the user icon to the right */
-    .message-container.user .icon {
-      order: 2;
-    }
-
-    /* Move the bot icon to the left */
-    .message-container.bot .icon {
-      order: 1;
     }
 
     /* Input Form */
@@ -239,7 +220,7 @@ box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
     </form>
   </div>
   <div id="loader">
-    <img src="loader.gif" alt="Loading...">
+    <img src="loader.gif" alt="Loading..."> <!-- Ensure the loader.gif path is correct -->
   </div>
 
   <script>
@@ -253,10 +234,11 @@ box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
       userInput.value = ''; // Clear input field
 
       // Add user message to chat history
-      chatHistory.innerHTML += `
+      chatHistory.innerHTML += ` 
         <div class="message-container user">
-          <div class="icon user">👤</div>
+         
           <div class="user-message">${userMessage}</div>
+           <div class="icon user">👤</div>
         </div>
       `;
       chatHistory.scrollTop = chatHistory.scrollHeight;
@@ -276,19 +258,21 @@ box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
         const botMessage = data.response;
 
         // Add bot message to chat history
-        chatHistory.innerHTML += `
+        chatHistory.innerHTML += ` 
           <div class="message-container bot">
             <div class="icon bot">🤖</div>
             <div class="bot-message">${botMessage}</div>
+            
           </div>
         `;
         chatHistory.scrollTop = chatHistory.scrollHeight;
       } catch (error) {
         console.error('Error:', error);
-        chatHistory.innerHTML += `
+        chatHistory.innerHTML += ` 
           <div class="message-container bot">
-            <div class="icon bot">🤖</div>
+             <div class="icon bot">🤖</div>
             <div class="bot-message">Sorry, something went wrong. Please try again.</div>
+           
           </div>
         `;
       } finally {
