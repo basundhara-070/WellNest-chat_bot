@@ -60,7 +60,7 @@ app.get('/', (req, res) => {
 app.get('/loader.gif', (req, res) => {
   res.sendFile(__dirname + '/loader.gif');
 });
-app.post('/', async (req, res) => {
+app.post('/chat', async (req, res) => {
   try {
     const userInput = req.body?.userInput;
     console.log('incoming /chat req', userInput)
@@ -80,3 +80,4 @@ app.listen(port, () => {
   console.log(`Server listening on port ${port}`);
 
 });
+
